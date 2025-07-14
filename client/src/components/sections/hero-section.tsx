@@ -68,25 +68,7 @@ export default function HeroSection() {
               </Link>
             </motion.div>
             
-            <motion.div 
-              className="flex items-center space-x-8 mt-12 pt-8 border-t border-gray-800"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <div className="text-center">
-                <AnimatedCounter target={500} className="text-3xl font-bold gradient-text" />
-                <div className="text-sm text-gray-400">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <AnimatedCounter target={150} className="text-3xl font-bold gradient-text" />
-                <div className="text-sm text-gray-400">Satisfied Clients</div>
-              </div>
-              <div className="text-center">
-                <AnimatedCounter target={25} className="text-3xl font-bold gradient-text" />
-                <div className="text-sm text-gray-400">Team Members</div>
-              </div>
-            </motion.div>
+
           </motion.div>
           
           <motion.div 
@@ -122,6 +104,42 @@ export default function HeroSection() {
                 <i className="fas fa-chart-line text-cyan-400"></i>
                 <span className="text-sm font-semibold">Real Growth</span>
               </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+      
+      {/* Statistics Section */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <div className="max-w-7xl mx-auto px-6 pb-12">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            <motion.div 
+              className="text-center glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+            >
+              <AnimatedCounter target={500} className="text-5xl font-black gradient-text mb-2" />
+              <div className="text-lg font-semibold text-gray-400">Projects Completed</div>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+            >
+              <AnimatedCounter target={150} className="text-5xl font-black gradient-text mb-2" />
+              <div className="text-lg font-semibold text-gray-400">Satisfied Clients</div>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center glass-effect rounded-2xl p-8 hover:bg-white/10 transition-all duration-300"
+              whileHover={{ scale: 1.05 }}
+            >
+              <AnimatedCounter target={25} className="text-5xl font-black gradient-text mb-2" />
+              <div className="text-lg font-semibold text-gray-400">Team Members</div>
             </motion.div>
           </motion.div>
         </div>

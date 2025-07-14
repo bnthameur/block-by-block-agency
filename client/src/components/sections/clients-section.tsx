@@ -87,57 +87,53 @@ export default function ClientsSection() {
           </p>
         </motion.div>
         
-        {/* Major Client Logos */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          {majorClients.map((client, index) => (
-            <motion.div
-              key={client.alt}
-              className="glass-effect rounded-xl p-6 flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <img 
-                src={client.src} 
-                alt={client.alt} 
-                className="max-w-full h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Infinite Scrolling Client Logos - First Row (Left to Right) */}
+        <div className="overflow-hidden mb-12">
+          <motion.div 
+            className="flex space-x-8 animate-scroll-left"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {[...majorClients, ...majorClients, ...majorClients].map((client, index) => (
+              <div
+                key={`${client.alt}-${index}`}
+                className="glass-effect rounded-xl p-6 flex items-center justify-center hover:bg-white/10 transition-all duration-300 group flex-shrink-0 w-48"
+              >
+                <img 
+                  src={client.src} 
+                  alt={client.alt} 
+                  className="max-w-full h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
         
-        {/* Additional clients row */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          {additionalClients.map((client, index) => (
-            <motion.div
-              key={client.alt}
-              className="glass-effect rounded-lg p-4 flex items-center justify-center hover:bg-white/10 transition-all duration-300 group"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              viewport={{ once: true }}
-            >
-              <img 
-                src={client.src} 
-                alt={client.alt} 
-                className="max-w-full h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Infinite Scrolling Client Logos - Second Row (Right to Left) */}
+        <div className="overflow-hidden mb-20">
+          <motion.div 
+            className="flex space-x-6 animate-scroll-right"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            {[...additionalClients, ...additionalClients, ...additionalClients].map((client, index) => (
+              <div
+                key={`${client.alt}-additional-${index}`}
+                className="glass-effect rounded-lg p-4 flex items-center justify-center hover:bg-white/10 transition-all duration-300 group flex-shrink-0 w-36"
+              >
+                <img 
+                  src={client.src} 
+                  alt={client.alt} 
+                  className="max-w-full h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
         
         {/* Testimonial */}
         <motion.div 

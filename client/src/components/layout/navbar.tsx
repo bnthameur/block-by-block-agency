@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Box, Menu, X } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
+import { Box, Menu, X, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +39,7 @@ export default function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? "bg-slate-900/95 backdrop-blur-20" 
+          ? "bg-background/95 backdrop-blur-20 border-b border-border/30" 
           : "glass-effect"
       }`}
     >
@@ -55,8 +57,8 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-gray-300 hover:text-white transition-colors duration-300 ${
-                  location === item.href ? "text-white font-medium" : ""
+                className={`text-muted-foreground hover:text-foreground transition-colors duration-300 ${
+                  location === item.href ? "text-foreground font-medium" : ""
                 }`}
               >
                 {item.label}
@@ -72,12 +74,23 @@ export default function Navbar() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
+                  className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
                 >
-                  <i className={`fab fa-${social.icon} text-sm`}></i>
+                  <i className={`fab fa-${social.icon} text-sm text-muted-foreground hover:text-white`}></i>
                 </a>
               ))}
             </div>
+            
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4 text-muted-foreground hover:text-white" />
+              ) : (
+                <Moon className="h-4 w-4 text-muted-foreground hover:text-white" />
+              )}
+            </button>
             
             <Link href="/contact">
               <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
@@ -86,7 +99,7 @@ export default function Navbar() {
             </Link>
 
             <button
-              className="md:hidden text-gray-300 hover:text-white"
+              className="md:hidden text-muted-foreground hover:text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -100,15 +113,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pt-4 border-t border-gray-700"
+            className="md:hidden mt-4 pt-4 border-t border-border"
           >
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-gray-300 hover:text-white transition-colors duration-300 ${
-                    location === item.href ? "text-white font-medium" : ""
+                  className={`text-muted-foreground hover:text-foreground transition-colors duration-300 ${
+                    location === item.href ? "text-foreground font-medium" : ""
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -122,9 +135,9 @@ export default function Navbar() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
+                    className="w-8 h-8 bg-muted rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-300"
                   >
-                    <i className={`fab fa-${social.icon} text-sm`}></i>
+                    <i className={`fab fa-${social.icon} text-sm text-muted-foreground hover:text-white`}></i>
                   </a>
                 ))}
               </div>

@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface AnimatedCounterProps {
   target: number;
@@ -11,61 +12,48 @@ interface AnimatedCounterProps {
 export default function AnimatedCounter({ 
   target, 
   duration = 2000, 
-  suffix = "+", 
+  suffix = "", 
   className = "" 
 }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [current, setCurrent] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
+    if (!isInView) return;
 
     const startTime = Date.now();
+    const startValue = 0;
+    const endValue = target;
+
     const animate = () => {
-      const elapsed = Date.now() - startTime;
+      const now = Date.now();
+      const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
       // Easing function for smooth animation
-      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(easeOutCubic * target);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const value = Math.floor(startValue + (endValue - startValue) * easeOutQuart);
       
-      setCount(current);
-      
+      setCurrent(value);
+
       if (progress < 1) {
         requestAnimationFrame(animate);
       }
     };
-    
+
     requestAnimationFrame(animate);
-  }, [isVisible, target, duration]);
+  }, [target, duration, isInView]);
 
   return (
-    <motion.div 
+    <motion.span
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
     >
-      {count}{suffix}
-    </motion.div>
+      {current.toLocaleString()}{suffix}
+    </motion.span>
   );
 }

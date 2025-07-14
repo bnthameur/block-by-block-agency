@@ -59,11 +59,25 @@ export default function ServicesPreview() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="glass-effect rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group"
+              className="glass-effect rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group card-3d"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+              }}
             >
               <div className="flex items-start space-x-6 mb-6">
                 <div className="flex-shrink-0">
