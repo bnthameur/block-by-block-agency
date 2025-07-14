@@ -32,8 +32,15 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900"></div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-950/30 to-slate-950"></div>
+      
+      {/* Enhanced Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-3/4 left-3/4 w-64 h-64 bg-purple-600/5 rounded-full blur-2xl"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
@@ -59,7 +66,7 @@ export default function ServicesPreview() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="glass-effect rounded-3xl p-8 hover:bg-white/10 transition-all duration-500 group card-3d"
+              className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 group card-3d shadow-xl hover:shadow-2xl hover:shadow-blue-500/10"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
@@ -70,8 +77,8 @@ export default function ServicesPreview() {
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 10;
-                const rotateY = (centerX - x) / 10;
+                const rotateX = (y - centerY) / 8;
+                const rotateY = (centerX - x) / 8;
                 
                 e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
               }}
@@ -79,49 +86,78 @@ export default function ServicesPreview() {
                 e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
               }}
             >
-              <div className="flex items-start space-x-6 mb-6">
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="w-8 h-8 text-white" />
+              <div className="relative">
+                {/* Background Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-cyan-400/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="flex items-start space-x-6 mb-6 relative z-10">
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 bg-slate-700/80 border border-slate-600/50 rounded-2xl flex items-center justify-center group-hover:bg-blue-600/20 group-hover:border-blue-500/50 transition-all duration-300">
+                      <service.icon className="w-8 h-8 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+                    </div>
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-300 mb-6 font-medium leading-relaxed">{service.description}</p>
                   </div>
                 </div>
-                <div className="flex-grow">
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-cyan-400 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6">{service.description}</p>
+                
+                <div className="relative z-10">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="rounded-xl w-full h-48 object-cover border border-slate-600/30 group-hover:border-blue-500/30 transition-colors duration-300"
+                  />
                 </div>
-              </div>
-              <div>
-                <img 
-                  src={service.image} 
-                  alt={service.title} 
-                  className="rounded-xl w-full h-48 object-cover"
-                />
+                
+                {/* Modern CTA */}
+                <div className="relative z-10 pt-6">
+                  <Link href="/services">
+                    <Button className="group/btn relative bg-slate-700/50 hover:bg-blue-600/80 border border-slate-600/50 hover:border-blue-500 text-slate-200 hover:text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 w-full">
+                      <span className="relative z-10 flex items-center justify-center">
+                        Explore Service 
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-400/20 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
         
         <motion.div 
-          className="text-center"
+          className="text-center bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-xl rounded-3xl p-12 border border-slate-700/50"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <p className="text-xl text-gray-300 mb-8">Ready to take your blockchain project to the next level?</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <h3 className="text-3xl font-bold text-white mb-4">Ready to Dominate Your Market?</h3>
+          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto font-medium">
+            Don't let your crypto project get lost in the noise. Partner with the agency that delivers results, not promises.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/services">
-              <Button size="lg" variant="outline" className="border-gray-600 hover:bg-white/5">
-                View All Services
+              <Button className="group relative bg-slate-700/50 hover:bg-slate-600/50 border-2 border-slate-600/50 hover:border-blue-500/50 text-slate-200 hover:text-white px-8 py-4 text-lg font-bold rounded-2xl backdrop-blur-sm transition-all duration-500 transform hover:scale-[1.02]">
+                <span className="relative z-10">Explore All Services</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               </Button>
             </Link>
-            <Link href="/contact">
-              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300">
-                Let's Make It Happen <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
+            
+            <a 
+              href="https://calendly.com/admin-blockbyblocksolutions/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] border border-blue-400/20 inline-flex items-center justify-center"
+            >
+              <span className="relative z-10 mr-2">Start Your Empire Today</span>
+              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+            </a>
           </div>
         </motion.div>
       </div>
