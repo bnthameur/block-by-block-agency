@@ -64,8 +64,9 @@ export default function ClientsSection() {
   ];
 
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 to-slate-800"></div>
+    <section className="py-24 relative overflow-hidden">
+      {/* Unified Background */}
+      <div className="absolute inset-0 bg-slate-950/30"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 

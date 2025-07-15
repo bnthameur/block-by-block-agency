@@ -35,7 +35,7 @@ export default function Navbar() {
     >
       {/* Compact Navbar Container */}
       <div className="bg-black/90 backdrop-blur-xl rounded-2xl border border-gray-800/50 shadow-2xl shadow-black/50">
-        <div className="flex items-center px-6 py-3 space-x-8">
+        <div className="flex items-center px-4 py-2 space-x-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <img 
@@ -46,14 +46,14 @@ export default function Navbar() {
           </Link>
           
           {/* Navigation Items */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-2">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 group ${
+                  className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl transition-all duration-300 group min-w-[100px] justify-center ${
                     location === item.href 
                       ? "bg-gray-800/80 text-white" 
                       : "text-gray-400 hover:text-white hover:bg-gray-800/50"
@@ -69,7 +69,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="pl-4 border-l border-gray-800">
             <Link href="/contact">
-              <Button className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-6 py-2 rounded-xl font-semibold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-[1.02]">
+              <Button className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-6 py-2.5 rounded-xl font-semibold text-sm shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:scale-[1.02] min-w-[120px]">
                 Get Started
               </Button>
             </Link>

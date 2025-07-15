@@ -3,12 +3,9 @@ import AnimatedCounter from "@/components/ui/animated-counter";
 
 export default function StatisticsSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-900/50 to-slate-800/30 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
-      </div>
+    <section className="py-20 relative overflow-hidden">
+      {/* Unified Background */}
+      <div className="absolute inset-0 bg-slate-950/30"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
