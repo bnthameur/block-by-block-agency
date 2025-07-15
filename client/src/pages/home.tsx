@@ -12,7 +12,7 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="overflow-x-hidden"
+      className="overflow-x-hidden pt-20"
     >
       <HeroSection />
       <StatisticsSection />

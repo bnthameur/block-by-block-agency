@@ -74,13 +74,10 @@ export default function ContactForm() {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-900"></div>
-      
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
-      </div>
+      {/* Unified Background like Hero Section */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-900"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.15),transparent_50%)] bg-[radial-gradient(circle_at_80%_20%,rgba(6,182,212,0.15),transparent_50%)] bg-[radial-gradient(circle_at_40%_80%,rgba(168,85,247,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

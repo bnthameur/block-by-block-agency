@@ -59,8 +59,10 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, rgb(2, 6, 23) 0%, rgb(30, 58, 138, 0.4) 50%, rgb(15, 23, 42) 100%);
+    min-height: 100vh;
   }
 }
 

@@ -33,14 +33,10 @@ export default function ServicesPreview() {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-blue-950/30 to-slate-950"></div>
-      
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-3/4 left-3/4 w-64 h-64 bg-purple-600/5 rounded-full blur-2xl"></div>
-      </div>
+      {/* Unified Background like Hero Section */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/40 to-slate-900"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.15),transparent_50%)] bg-[radial-gradient(circle_at_80%_20%,rgba(6,182,212,0.15),transparent_50%)] bg-[radial-gradient(circle_at_40%_80%,rgba(168,85,247,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
@@ -142,8 +138,8 @@ export default function ServicesPreview() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/services">
-              <Button className="group relative bg-slate-700/50 hover:bg-slate-600/50 border-2 border-slate-600/50 hover:border-blue-500/50 text-slate-200 hover:text-white px-8 py-4 text-lg font-bold rounded-2xl backdrop-blur-sm transition-all duration-500 transform hover:scale-[1.02]">
-                <span className="relative z-10">Explore All Services</span>
+              <Button className="group relative bg-slate-700/50 hover:bg-slate-600/50 border-2 border-slate-600/50 hover:border-blue-500/50 text-slate-200 hover:text-white px-8 py-4 text-lg font-bold rounded-2xl backdrop-blur-sm transition-all duration-500 transform hover:scale-[1.02] min-w-[200px] h-[56px] inline-flex items-center justify-center">
+                <span className="relative z-10">View Case Studies</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               </Button>
             </Link>
@@ -152,9 +148,9 @@ export default function ServicesPreview() {
               href="https://calendly.com/admin-blockbyblocksolutions/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] border border-blue-400/20 inline-flex items-center justify-center"
+              className="group relative bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-8 py-4 text-lg font-bold rounded-2xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] border border-blue-400/20 inline-flex items-center justify-center min-w-[200px] h-[56px]"
             >
-              <span className="relative z-10 mr-2">Start Your Empire Today</span>
+              <span className="relative z-10 mr-2">Start Your Empire</span>
               <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
             </a>
