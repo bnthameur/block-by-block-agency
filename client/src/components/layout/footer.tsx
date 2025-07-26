@@ -30,9 +30,13 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Box className="w-5 h-5 text-white" />
+                <img 
+              src="../../../public/logo.png" 
+              alt="Block by Block Solutions"
+              className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
               </div>
-              <span className="text-xl font-bold gradient-text">Block by Block</span>
+              <span className="text-xl font-bold gradient-text">Block3</span>
             </div>
             <p className="text-gray-400 mb-6">
               Building blockchain brands that matter. We craft high-converting campaigns and engineer genuine engagement for long-term success.

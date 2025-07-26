@@ -5,21 +5,12 @@ import { ArrowRight, TrendingUp, Users, Zap } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900/10 to-transparent"></div>
-        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl animate-pulse-glow"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-purple-600/5 rounded-full blur-2xl"></div>
-        
-        {/* Animated Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      </div>
+    <section className="py-10 min-h-fit flex items-center justify-center relative overflow-hidden">
       
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10 pt-20">
+      
+      <div className="max-w-10xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center relative z-10 ">
         <motion.div
-          className="space-y-10"
+          className="space-y-7"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
@@ -63,17 +54,13 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <a 
-              href="https://calendly.com/admin-blockbyblocksolutions/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-10 py-6 text-xl font-bold rounded-2xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] border border-blue-400/20 inline-flex items-center justify-center"
-            >
-              <span className="relative z-10 mr-2">Start Your Empire</span>
-              <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-            </a>
-            
+            <Link href="">
+              <Button className="group relative bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 text-white px-10 py-6 text-xl font-bold rounded-2xl shadow-2xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-500 transform hover:scale-[1.02] border border-blue-400/20 inline-flex items-center justify-center">
+                <span className="relative z-10 mr-2">Start Your Empire</span>
+                <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+              </Button>
+            </Link>
             <Link href="/services">
               <Button className="group relative bg-slate-800/50 hover:bg-slate-700/50 border-2 border-slate-600/50 hover:border-blue-500/50 text-slate-200 hover:text-white px-10 py-6 text-xl font-bold rounded-2xl backdrop-blur-sm transition-all duration-500 transform hover:scale-[1.02]">
                 <span className="relative z-10">View Case Studies</span>
@@ -82,28 +69,7 @@ export default function HeroSection() {
             </Link>
           </motion.div>
           
-          {/* Trust Indicators */}
-          <motion.div 
-            className="flex items-center space-x-8 pt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-          >
-            <div className="text-center">
-              <div className="text-3xl font-black text-white">500+</div>
-              <div className="text-sm text-slate-400 font-medium">Projects Launched</div>
-            </div>
-            <div className="w-px h-12 bg-slate-700"></div>
-            <div className="text-center">
-              <div className="text-3xl font-black text-white">$2B+</div>
-              <div className="text-sm text-slate-400 font-medium">Market Cap Created</div>
-            </div>
-            <div className="w-px h-12 bg-slate-700"></div>
-            <div className="text-center">
-              <div className="text-3xl font-black text-white">24/7</div>
-              <div className="text-sm text-slate-400 font-medium">Expert Support</div>
-            </div>
-          </motion.div>
+         
         </motion.div>
         
         <motion.div 

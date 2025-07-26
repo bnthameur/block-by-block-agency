@@ -61,9 +61,13 @@
   body {
     @apply font-sans antialiased text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
-    background: linear-gradient(135deg, rgb(2, 6, 23) 0%, rgb(30, 58, 138, 0.3) 50%, rgb(15, 23, 42) 100%);
-    background-attachment: fixed;
     min-height: 100vh;
+    /* ✅ New background effect to match the image */
+    background-color: hsl(222, 84%, 4%); /* Base dark background */
+    background-image: 
+      /* Soft radial glow from the top */
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent 80%);
+    background-attachment: fixed;
   }
 }
 

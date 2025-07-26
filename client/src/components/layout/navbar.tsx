@@ -31,15 +31,16 @@ export default function Navbar() {
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50"
+      // This full-width container uses pointer-events-none...
+      className="hidden md:flex fixed top-0 left-0 w-full justify-center pt-6 z-50 pointer-events-none"
     >
       {/* Compact Navbar Container */}
-      <div className="bg-black/90 backdrop-blur-xl rounded-2xl border border-gray-800/50 shadow-2xl shadow-black/50">
+      <div className="flex items-center bg-black/50 backdrop-blur-xl rounded-2xl border border-gray-800/50 shadow-2xl shadow-black/50 px-4 py-1 space-x-4 pointer-events-auto">
         <div className="flex items-center px-4 py-2 space-x-4">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <img 
-              src="attached_assets/image_1752535909469.png" 
+              src="../../../public/logo.png" 
               alt="Block by Block Solutions"
               className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
             />
